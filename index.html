@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="heading">Hash Generator</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="input-container">
+                <input type="text" id="inputText" class="input-field" placeholder="Enter text...">
+                <select id="hashType" class="select-field">
+                    <option value="" selected disabled>Select Hash Algorithm</option>
+                    <option value="md5">MD5</option>
+                    <option value="sha256">SHA-256</option>
+                </select>
+                <button onclick="generateHash()" class="generate-button">Generate</button>
+            </div>
+            <div>
+                <label for="images" class="drop-container">
+                    <span class="drop-title">Drop file here</span>
+                    or
+                    <input type="file" id="images"> 
+                    <button type="button" id="clearFile" class="clear-button" style="display: none;">&times;</button>
+                </label>
+            </div>
+            <div id="result" class="result">
+                <div id="finalOutput" class="final-output" style="display: none;"></div>
+                <div id="outputContainer" class="output-container" style="display: none;"></div>
+            </div>
+
+            <!-- Compare Text Section -->
+            <div id="textComparisonContainer" class="comparison-container" style="display: none;">
+                <h3>Compare Texts</h3>
+                <div>
+                    <input type="text" id="inputText1" class="input-field" placeholder="Enter first text...">
+                    <input type="text" id="inputText2" class="input-field" placeholder="Enter second text...">
+                    <select id="hashTypeTextComparison" class="select-field">
+                        <option value="" selected disabled>Select Hash Algorithm</option>
+                        <option value="md5">MD5</option>
+                        <option value="sha256">SHA-256</option>
+                    </select>
+                    <button onclick="compareTextHashes()" class="generate-button">Generate</button>
+                </div>
+                <div id="textComparisonResult" class="comparison-result" style="display: none;">
+                    <div>
+                        <h4>First Text</h4>
+                        <p><strong>Input:</strong> <span id="compareInputText1"></span></p>
+                        <p><strong>Hashes:</strong> <span id="compareTextHash1"></span></p>
+                    </div>
+                    <div>
+                        <h4>Second Text</h4>
+                        <p><strong>Input:</strong> <span id="compareInputText2"></span></p>
+                        <p><strong>Hashes:</strong> <span id="compareTextHash2"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compare Files Section -->
+            <div id="fileComparisonContainer" class="comparison-container" style="display: none;">
+                <h3>Compare Files</h3>
+                <div>
+                    <label for="inputFile1" class="drop-container">
+                        <span class="drop-title">Drop first file here</span>
+                        or
+                        <input type="file" id="inputFile1"> 
+                        <button type="button" id="clearFile1" class="clear-button" style="display: none;">&times;</button>
+                    </label>
+                    <label for="inputFile2" class="drop-container">
+                        <span class="drop-title">Drop second file here</span>
+                        or
+                        <input type="file" id="inputFile2"> 
+                        <button type="button" id="clearFile2" class="clear-button" style="display: none;">&times;</button>
+                    </label>
+                    <select id="hashTypeFileComparison" class="select-field">
+                        <option value="" selected disabled>Select Hash Algorithm</option>
+                        <option value="md5">MD5</option>
+                        <option value="sha256">SHA-256</option>
+                    </select>
+                    <button onclick="compareFileHashes()" class="generate-button">Generate</button>
+                </div>
+                <div id="fileComparisonResult" class="comparison-result" style="display: none;">
+                    <div>
+                        <h4>First File</h4>
+                        <p><strong>File Name:</strong> <span id="compareInputFile1"></span></p>
+                        <p><strong>Hashes:</strong> <span id="compareFileHash1"></span></p>
+                    </div>
+                    <div>
+                        <h4>Second File</h4>
+                        <p><strong>File Name:</strong> <span id="compareInputFile2"></span></p>
+                        <p><strong>Hashes:</strong> <span id="compareFileHash2"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="compareTextButton" class="compare-button">Compare Text</button>
+            <button id="compareFileButton" class="compare-button">Compare File</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Hash Generator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
